@@ -1,5 +1,6 @@
 
 
+TRUNCATE TABLE transactions RESTART IDENTITY;
 
 
 INSERT INTO transactions
@@ -70,6 +71,30 @@ VALUES
 (105,'INTERAC_TRANSFER',-90.00,'POSTED','2026-06-16 09:20','2026-06-16 09:21','Rent Share'),
 (105,'DEBIT_CARD',-210.00,'POSTED','2026-06-19 19:30','2026-06-19 19:31','Shopping'),
 (105,'ATM_WITHDRAWAL',-50.00,'POSTED','2026-06-22 11:45','2026-06-22 11:46','ATM');
+
+
+
+INSERT INTO transactions
+(account_id, transaction_type, amount, transaction_status, created_at, posted_at, description)
+VALUES
+
+(101,'INTERAC_TRANSFER',-120.00,'PENDING','2026-07-01 09:15:00',NULL,'Rent payment'),
+
+(102,'DEBIT_CARD',-45.80,'FAILED','2026-07-01 10:22:00',NULL,'Coffee Shop'),
+
+(103,'ATM_WITHDRAWAL',-200.00,'PENDING','2026-07-02 14:05:00',NULL,'Cash Withdrawal'),
+
+(104,'INTERAC_TRANSFER',-500.00,'POSTED','2026-07-02 16:45:00','2026-07-02 16:47:00','Car Payment'),
+
+(105,'DEBIT_CARD',-89.99,'PENDING','2026-07-03 08:30:00',NULL,'Grocery Store'),
+
+(101,'REFUND',120.00,'POSTED','2026-07-03 13:10:00','2026-07-03 13:11:00','Refund'),
+
+(102,'SALARY',4200.00,'POSTED','2026-07-03 09:00:00','2026-07-03 09:01:00','Monthly Salary'),
+
+(103,'INTERAC_TRANSFER',-75.00,'FAILED','2026-07-03 18:25:00',NULL,'Dinner Split'),
+
+(101,'DEBIT_CARD',120.00,'REVERSED','2026-07-03 13:10:00','2026-07-03 13:11:00','Reversed');
 
  
 
