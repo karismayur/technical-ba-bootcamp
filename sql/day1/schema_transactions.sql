@@ -7,7 +7,10 @@ CREATE TABLE transactions (
     transaction_status VARCHAR(20) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     posted_at TIMESTAMP,
-    description TEXT
+    description TEXT,
+
+    FOREIGN KEY (account_id)
+        REFERENCES accounts(account_id)
 );
 
 
