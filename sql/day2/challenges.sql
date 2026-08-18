@@ -103,7 +103,7 @@ WHERE transaction_type = 'DEBIT_CARD';
 
 
 -- Show the largest withdrawal (most negative amount) in the transactions table.
-SELECT MIN(amount) AS lasrgest_withdrawal
+SELECT MIN(amount) AS largest_withdrawal
 FROM transactions
 WHERE amount < 0;
 
