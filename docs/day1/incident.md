@@ -1,5 +1,3 @@
-
-
 # JIRA-1048 Missing Transactions
 
 ## Incident Summary
@@ -7,6 +5,18 @@
 **Reported by:** Emma (Product Manager)
 
 Customers reported that some transactions were not appearing in the mobile application after a recent release.
+
+---
+
+## Scope & Impact
+
+The initial scope was unknown. The investigation questions were intended to determine whether the issue was:
+
+- affecting all customers or a subset
+- limited to specific transaction types
+- device or platform specific
+- related to a specific release
+- regional or time-dependent
 
 ---
 
@@ -37,23 +47,26 @@ The following SQL concepts were used during the investigation:
 - ORDER BY
 - LIMIT
 - DISTINCT
+- Timestamp filtering
 
-The investigation also discussed how UPDATE and DELETE statements should be executed safely in production.
+The investigation also discussed how UPDATE and DELETE statements should be executed safely in production. Records were first queried to verify the intended rows before making changes.
 
 ---
 
 ## Key Learnings
 
 - Never use UPDATE or DELETE without first verifying the affected rows.
-- LIMIT should almost always be combined with ORDER BY.
-- DISTINCT is useful for quickly identifying unexpected values.
+- LIMIT should almost always be combined with ORDER BY when retrieving a specific subset of records.
+- DISTINCT is useful for quickly identifying unique or unexpected values.
 - Numeric columns should be compared using numbers, not strings.
+- Negative transaction amounts represent withdrawals/debits in the dataset; a more negative value represents a larger withdrawal.
+- Timestamp filters should use an appropriate date and time when investigating time-specific issues.
 - UPDATE 0 or DELETE 0 is not necessarily an error—it simply means no rows matched the condition.
 
 ---
 
 ## Outcome
 
-No root cause was identified because this was a simulated production incident used for SQL practice.
+This was a simulated production investigation, so no production root cause was available to confirm.
 
-The investigation successfully demonstrated how SQL can be used by a Technical Business Analyst to narrow down production issues.
+The investigation demonstrated a structured approach to narrowing a transaction-visibility issue using business questions, SQL analysis and production-safety considerations.
